@@ -1,0 +1,90 @@
+[
+  {
+    "id": "kp_01",
+    "category": "known_paper",
+    "question": "What is the main contribution of the Attention Is All You Need paper?",
+    "expected_paper_id": "1706.03762",
+    "expected_keywords": ["self-attention", "transformer", "encoder", "decoder"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "kp_02",
+    "category": "known_paper",
+    "question": "Summarize the RLHF paper by Christiano et al. 2017",
+    "expected_paper_id": "1706.03741",
+    "expected_keywords": ["human feedback", "reward model", "preference"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "kp_03",
+    "category": "known_paper",
+    "question": "What does the BERT paper propose?",
+    "expected_paper_id": "1810.04805",
+    "expected_keywords": ["bidirectional", "pre-training", "fine-tuning", "masked"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "kp_04",
+    "category": "known_paper",
+    "question": "Explain the LoRA fine-tuning method from paper 2106.09685",
+    "expected_paper_id": "2106.09685",
+    "expected_keywords": ["low-rank", "adaptation", "weight matrix", "parameters"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "sq_01",
+    "category": "search_query",
+    "question": "Find a paper on retrieval augmented generation and explain how it works",
+    "expected_paper_id": null,
+    "expected_keywords": ["retrieval", "generation", "knowledge", "document"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "sq_02",
+    "category": "search_query",
+    "question": "What recent work exists on chain of thought prompting?",
+    "expected_paper_id": null,
+    "expected_keywords": ["chain of thought", "reasoning", "prompting", "step"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "sq_03",
+    "category": "search_query",
+    "question": "Find papers on mixture of experts models",
+    "expected_paper_id": null,
+    "expected_keywords": ["expert", "routing", "sparse", "mixture"],
+    "expects_tool_call": true
+  },
+  {
+    "id": "nt_01",
+    "category": "no_tool_needed",
+    "question": "What is the difference between supervised and unsupervised learning?",
+    "expected_paper_id": null,
+    "expected_keywords": ["labeled", "unlabeled", "classification", "clustering"],
+    "expects_tool_call": false
+  },
+  {
+    "id": "nt_02",
+    "category": "no_tool_needed",
+    "question": "What does gradient descent do in neural network training?",
+    "expected_paper_id": null,
+    "expected_keywords": ["gradient", "loss", "optimization", "weights"],
+    "expects_tool_call": false
+  },
+  {
+    "id": "bi_01",
+    "category": "bad_input",
+    "question": "Tell me about arxiv paper 9999.99999",
+    "expected_paper_id": "9999.99999",
+    "expected_keywords": [],
+    "expects_tool_call": true
+  },
+  {
+    "id": "bi_02",
+    "category": "bad_input",
+    "question": "asdkjhasd lkjhaksjdh paper please",
+    "expected_paper_id": null,
+    "expected_keywords": [],
+    "expects_tool_call": false
+  }
+]
