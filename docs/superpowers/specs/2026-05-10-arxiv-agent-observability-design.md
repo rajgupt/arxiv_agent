@@ -118,7 +118,7 @@ This prompt is intentionally strict to make the `tool_called` eval signal meanin
 OpenRouter via OpenAI-compatible API:
 ```
 base_url = "https://openrouter.ai/api/v1"
-model = "qwen/qwen3-35b-a3b"
+model = "deepseek/deepseek-v4-flash"
 api_key = OPENROUTER_API_KEY
 ```
 
