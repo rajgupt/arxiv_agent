@@ -98,10 +98,24 @@ wheels = [
 ]
 
 [[package]]
+name = "arxiv"
+version = "3.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "feedparser" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ff/78/1e93a001ed51b5114e1978247078fa3130cbb2794a520603949cbe9a7028/arxiv-3.0.0.tar.gz", hash = "sha256:c8cb0d31208afbc1ceb17bd3f9816c8d4c5ca1e0abf199d211e216715440498d", size = 67344, upload-time = "2026-04-12T22:48:59.623Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9d/0d/bb2ef604e5548ba73ba6326576908d8285ebf3468b02b86af83381c7c973/arxiv-3.0.0-py3-none-any.whl", hash = "sha256:8b4d4e2e336bfeb71ea653623d7dadb260f682f0475cee2aecad0560a23b34db", size = 11928, upload-time = "2026-04-12T22:48:58.44Z" },
+]
+
+[[package]]
 name = "arxiv-agent"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "arxiv" },
     { name = "feedparser" },
     { name = "httpx" },
     { name = "ipykernel" },
@@ -122,6 +136,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "arxiv", specifier = ">=3.0.0" },
     { name = "feedparser", specifier = ">=6.0.12" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "ipykernel", specifier = ">=7.2.0" },
