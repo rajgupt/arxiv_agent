@@ -34,7 +34,7 @@ def arxiv_fetch(paper_id: str = "", search_query: str = "") -> str:
 TOOLS = [arxiv_fetch]
 TOOL_MAP = {t.name: t for t in TOOLS}
 
-MODEL = "qwen/qwen3-35b-a3b"
+MODEL = "qwen/qwen3.6-flash"
 
 
 def _make_llm():
@@ -127,8 +127,9 @@ def run_agent(question: str, trace=None) -> dict:
     final_answer = result["messages"][-1].content
     if trace:
         trace.update(output=final_answer)
+        trace.end()
     return {
         "answer": final_answer,
-        "trace_id": trace.id if trace else None,
+        "trace_id": trace.trace_id if trace else None,
         "messages": result["messages"],
     }

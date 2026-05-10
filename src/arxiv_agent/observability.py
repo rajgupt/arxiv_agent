@@ -1,7 +1,7 @@
 import os
-import time
 import httpx
 from langfuse import Langfuse
+from langfuse._client.span import LangfuseSpan
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -29,32 +29,39 @@ def check_connection() -> bool:
         return False
 
 
-def start_trace(question: str):
-    return get_client().trace(name="arxiv_agent_run", input=question)
+def start_trace(question: str) -> LangfuseSpan:
+    """Start a root agent span that acts as the trace for an agent run."""
+    return get_client().start_observation(
+        name="arxiv_agent_run",
+        as_type="agent",
+        input=question,
+    )
 
 
-def llm_span(trace, name: str, prompt_tokens: int, completion_tokens: int, latency_ms: float, model: str):
-    return trace.span(
+def llm_span(trace: LangfuseSpan, name: str, prompt_tokens: int, completion_tokens: int, latency_ms: float, model: str) -> LangfuseSpan:
+    return trace.start_observation(
         name=name,
-        metadata={
-            "model": model,
-            "prompt_tokens": prompt_tokens,
-            "completion_tokens": completion_tokens,
-            "latency_ms": latency_ms,
+        as_type="generation",
+        model=model,
+        usage_details={
+            "input": prompt_tokens,
+            "output": completion_tokens,
         },
+        metadata={"latency_ms": latency_ms},
     )
 
 
 def tool_span(
-    trace,
+    trace: LangfuseSpan,
     paper_id_or_query: str,
     fetch_latency_ms: float,
     chars_returned: int,
     success: bool,
     paper_title: str | None = None,
-):
-    return trace.span(
+) -> LangfuseSpan:
+    return trace.start_observation(
         name="arxiv_fetch",
+        as_type="tool",
         input=paper_id_or_query,
         metadata={
             "fetch_latency_ms": fetch_latency_ms,
